@@ -30,9 +30,38 @@ $("signupBtn").onclick=async()=>{
   const {error}=await db.auth.signUp({email:$("email").value,password:$("password").value});
   setMessage(error?error.message:"Account created. Check your email if confirmation is enabled.");
 };
-$("loginBtn").onclick=async()=>{
+
   const {error}=await db.auth.signInWithPassword({email:$("email").value,password:$("password").value});
   setMessage(error?error.message:"");
+};$("loginBtn").onclick = async () => {
+  const email = $("email").value.trim();
+  const password = $("password").value;
+
+  if (!email || !password) {
+    setMessage("Enter your email and password.");
+    return;
+  }
+
+  setMessage("Logging in...");
+
+  try {
+    const { data, error } = await db.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) throw error;
+
+    if (data.user) {
+      setMessage("Login successful!");
+      await enterApp(data.user);
+    } else {
+      setMessage("Login failed: no user returned.");
+    }
+  } catch (error) {
+    setMessage("Error: " + error.message);
+    alert("Login error: " + error.message);
+  }
 };
 $("logoutBtn").onclick=()=>db.auth.signOut();
 $("themeBtn").onclick=()=>document.body.classList.toggle("dark");
