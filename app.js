@@ -1,6 +1,6 @@
 // Paste your Supabase project values here.
 const SUPABASE_URL = "https://jtrkaltfmzpkfzqvctdl.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0cmthbHRmbXpwa2Z6cXZjdGRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk3NzAwOTEsImV4cCI6MjEwNTM0NjA5MX0";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
 
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let currentUser = null, selectedUser = null, channel = null;
