@@ -30,9 +30,7 @@ $("signupBtn").onclick=async()=>{
   const {error}=await db.auth.signUp({email:$("email").value,password:$("password").value});
   setMessage(error?error.message:"Account created. Check your email if confirmation is enabled.");
 };
-
-  const {error}=await db.auth.signInWithPassword({email:$("email").value,password:$("password").value});
-  setMessage(error?error.message:"");
+  
 };$("loginBtn").onclick = async () => {
   const email = $("email").value.trim();
   const password = $("password").value;
